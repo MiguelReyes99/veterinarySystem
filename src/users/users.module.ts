@@ -3,13 +3,13 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { USERS } from './model/users.model';
-import { SequelizeModule } from '@nestjs/sequelize';
 
 @Module({
     imports: [
-        SequelizeModule.forFeature([USERS])
+        TypeOrmModule.forFeature([USERS])
     ],
     controllers: [UsersController],
-    providers: [UsersService]
+    providers: [UsersService],
+    exports: [UsersService],
 })
-export class UsersModule {}
+export class UsersModule { }
