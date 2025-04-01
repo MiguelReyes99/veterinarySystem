@@ -14,6 +14,10 @@ export class UsersService {
         return this.usersRepository.save(user);
     }
 
+    async getAllUsers() {
+        return await this.usersRepository.find();
+    }
+
     async findUser(id?: number) {
         return await this.usersRepository.findOne({ 
             where: { id }

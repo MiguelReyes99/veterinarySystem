@@ -13,6 +13,11 @@ export class UsersController {
         return this.usersService.uploadUser(user);
     }
 
+    @Get("usersList")
+    async getAllUsers() {
+        return this.usersService.getAllUsers();
+    }
+
     @Get("/:id")
     async getUserById(@Param("id") id: number) {
         return this.usersService.findUser(id);
