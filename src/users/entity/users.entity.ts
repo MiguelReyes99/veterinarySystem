@@ -6,10 +6,10 @@ export class USERS {
     id?: number;
 
     @Column({ type: String, nullable: false, length: 100 })
-    first_name!: string;
+    firstName!: string;
 
     @Column({ type: String, nullable: false, length: 100 })
-    last_name!: string;
+    lastName!: string;
 
     @Column({ type: String, nullable: false, length: 100 })
     position!: string;

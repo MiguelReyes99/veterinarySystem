@@ -1,22 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { UserDTO } from './dto/user.dto';
 import { Repository, UpdateResult } from 'typeorm';
-import { InjectModel } from '@nestjs/sequelize';
-import { USERS } from './model/users.model';
+import { InjectRepository } from '@nestjs/typeorm';
+import { USERS } from './entity/users.entity';
 
 @Injectable()
 export class UsersService {
     constructor(
-        @InjectModel(USERS) private usersRepository: Repository<USERS>
+        @InjectRepository(USERS) private readonly usersRepository: Repository<USERS>
     ) {}
 
     async uploadUser(user: UserDTO) {
         return this.usersRepository.save(user);
     }
 
-    async findUser(id: number) {
-        const userExists = await this.usersRepository.findOne({ where: { id }});
-        return userExists;
+    async findUser(id?: number) {
+        return await this.usersRepository.findOne({ 
+            where: { id }
+        });
     }
 
     updateUser(user: UserDTO) {
@@ -28,7 +29,7 @@ export class UsersService {
 
         const rows: UpdateResult = await this.usersRepository.update(
             { id },
-            { status: 0}
+            { status: parseInt("0") }
         )
 
         return rows.affected == 1;

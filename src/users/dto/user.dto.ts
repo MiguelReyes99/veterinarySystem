@@ -9,10 +9,6 @@ export class UserDTO {
 
     @IsNotEmpty()
     @IsString()
-    name!: string;
-
-    @IsNotEmpty()
-    @IsString()
     firstName!: string;
 
     @IsNotEmpty()
@@ -30,4 +26,8 @@ export class UserDTO {
     @IsNotEmpty()
     @IsString()
     password!: string;
+
+    @IsPositive()
+    @IsNumber()
+    status!: number
 }
