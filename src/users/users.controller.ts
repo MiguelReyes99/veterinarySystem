@@ -14,7 +14,7 @@ export class UsersController {
     }
 
     @Get("/:id")
-    async getUserById(@Param() id: number) {
+    async getUserById(@Param("id") id: number) {
         return this.usersService.findUser(id);
     }
 
@@ -24,7 +24,7 @@ export class UsersController {
     }
 
     @Delete("/:id")
-    deleteProduct(@Param() id: number) {
+    deleteProduct(@Param("id") id: number) {
         return this.usersService.deleteUser(id);
     }
 }
