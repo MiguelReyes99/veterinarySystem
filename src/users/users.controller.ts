@@ -18,9 +18,9 @@ export class UsersController {
         return this.usersService.getAllUsers();
     }
 
-    @Get("username")
-    async getUserByUsername(@Query("username") username: string) {
-        return this.usersService.findUserByUsername(username);
+    @Get("user")
+    async getUserByUsername(@Query("username") username: string, @Query("password") password: string) {
+        return this.usersService.findUserByUsername(username, password);
     }
 
     @Get("/:id")
