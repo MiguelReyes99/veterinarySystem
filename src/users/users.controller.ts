@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UserDTO } from './dto/user.dto';
 
@@ -16,6 +16,11 @@ export class UsersController {
     @Get("usersList")
     async getAllUsers() {
         return this.usersService.getAllUsers();
+    }
+
+    @Get("username")
+    async getUserByUsername(@Query("username") username: string) {
+        return this.usersService.findUserByUsername(username);
     }
 
     @Get("/:id")
