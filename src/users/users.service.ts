@@ -21,7 +21,11 @@ export class UsersService {
 
     async findUserByUsername(username: string, password: string) {
         return await this.usersRepository.findOne({
-            where: { username, password }
+            where: { 
+                username, 
+                password,
+                status: 1
+            }
         })
     }
 
