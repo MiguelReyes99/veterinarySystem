@@ -28,12 +28,12 @@ export class UsersController {
         return this.usersService.findUser(id);
     }
 
-    @Put()
+    @Put("update")
     updateUser(@Body() user: UserDTO) {
         return this.usersService.updateUser(user);
     }
 
-    @Delete("/:id")
+    @Delete("delete/:id")
     deleteProduct(@Param("id") id: number) {
         return this.usersService.deleteUser(id);
     }

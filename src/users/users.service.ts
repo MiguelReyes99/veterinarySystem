@@ -44,7 +44,7 @@ export class UsersService {
 
         const rows: UpdateResult = await this.usersRepository.update(
             { id },
-            { status: parseInt("0") }
+            { status: 0 }
         )
 
         return rows.affected == 1;
